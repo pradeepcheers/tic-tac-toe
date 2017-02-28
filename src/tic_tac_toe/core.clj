@@ -28,4 +28,45 @@
 
 (display-board sample-board)
 
+(defn get-col [ b n]
+  (map #(get % n) b)
+  )
+
+
+(defn get-row [ b n]
+  (get b n )
+  )
+
+
+(defn get-diag [ b dir]
+  (mapv #(get %1 %2) b (range 3))
+  )
+
+(get-diag sample-board 1)
+
+(get-col sample-board 2)
+
+(get-row sample-board 2)
+ 
+
+
+
+(def board (atom [["_" "_" "_"] ["_" "_" "_"] ["_" "_" "_"]]))
+
+(get-in board [1 2])
+
+(def player1 "X")
+(def player2 "O")
+
+
+(defn play
+  [player [a b]]
+  (if (= "_" (get-in @board [a b]))
+    (reset! board (update-in @board [a b] #(clojure.string/replace % #"_" player)))
+    "Invalid move!"))
+
+(play player2 [0 0])
+(play player1 [1 2])
+(play player2 [0 1])
+(play player1 [0 1])
 
