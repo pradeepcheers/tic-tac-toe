@@ -11,9 +11,10 @@
 
 (defn check-for-winner
   [board]
-  (check-rows-for-winner board)
-  (check-columns-for-winner board)
-  (check-diagonal-for-winner board))
+  (or 
+   (check-rows-for-winner board) 
+   (check-columns-for-winner board) 
+   (check-diagonals-for-winner board)))
 
 (defn check-rows-for-winner
   [board]
