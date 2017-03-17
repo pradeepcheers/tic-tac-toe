@@ -3,7 +3,6 @@
 
 (require '[clojure.string :as s])
 
-
 (defn -main
   "I don't do a whole lot ... yet."
   [& args]
@@ -39,26 +38,19 @@
 (defn display-board [b]
   (def bar  "--------------\n")
   (defn row-to-str [r]
-    (str "| " (s/join " | " r) " |")
-    )
-  (println (str bar (s/join "\n" (map row-to-str b)) "\n" bar))
-  )
+    (str "| " (s/join " | " r) " |"))
+  (println (str bar (s/join "\n" (map row-to-str b)) "\n" bar)))
 
 (display-board sample-board)
 
 (defn get-col [ b n]
-  (map #(get % n) b)
-  )
-
+  (map #(get % n) b))
 
 (defn get-row [ b n]
-  (get b n )
-  )
-
+  (get b n ))
 
 (defn get-diag [ b dir]
-  (mapv #(get %1 %2) b (range 3))
-  )
+  (mapv #(get %1 %2) b (range 3)))
 
 (get-diag sample-board 1)
 
@@ -66,16 +58,12 @@
 
 (get-row sample-board 2)
 
-
-
-
 (def board (atom [["_" "_" "_"] ["_" "_" "_"] ["_" "_" "_"]]))
 
 (get-in board [1 2])
 
 (def player1 "X")
 (def player2 "O")
-
 
 (defn play
   [player [a b]]
